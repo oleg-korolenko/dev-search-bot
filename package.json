@@ -1,7 +1,7 @@
 {
   "name": "dev-search-telegram-bot",
   "version": "1.0.0",
-  "description": "Telegram bot for dev search on diffent tech sources",
+  "description": "Telegram bot for dev search on different tech sources",
   "main": "src/app.js",
   "engines": {
     "node": "6.x"
@@ -16,9 +16,10 @@
   ],
   "author": "oleg.korolenko@gmail.com",
   "license": "MIT",
-  "dependencies": {    
-    "telegram-node-bot": "^3.0.12",
-    "express": "4.13.3"
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "4.13.3",
+    "telegram-node-bot": "^3.0.12"
   },
   "devDependencies": {
     "eslint": "^3.3.1",

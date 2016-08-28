@@ -1,15 +1,18 @@
 'use strict';
 
+require('dotenv').config();
+const apiKey = process.env.TELEGRAM_API_KEY; 
+
 const Telegram = require('telegram-node-bot');
 const TelegramBaseController = Telegram.TelegramBaseController;
-const tg = new Telegram.Telegram('181739768:AAGWDZOetZK5NAELIRn_VlJkVeFuoiOZ0xM');
+const tg = new Telegram.Telegram(apiKey);
 
 class HelloController extends TelegramBaseController {
     /**
      * @param {Scope} $
      */
     pingHandler($) {
-        $.sendMessage('pong');
+        $.sendMessage('Hello yourself human');
     }
 
     get routes() {
@@ -20,9 +23,14 @@ class HelloController extends TelegramBaseController {
 }
 
 
+console.log('Bot started!');
+
+
 class OtherwiseController extends TelegramBaseController {
     handle() {console.log('otherwise');}
 }
 tg.router
     .when(['hello'], new HelloController())
     .otherwise(new OtherwiseController());
+
+
