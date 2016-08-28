@@ -1,47 +1,23 @@
 'use strict';
 
-const express = require('express');
-const app = express();
+const Telegram = require('telegram-node-bot');
+const TelegramBaseController = Telegram.TelegramBaseController;
+const tg = new Telegram.Telegram('181739768:AAGWDZOetZK5NAELIRn_VlJkVeFuoiOZ0xM');
 
-app.set('port', (process.env.PORT || 5000));
-
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
-
-
-const apiKey = process.env.TELEGRAM_API_KEY;
-const telegram = require('telegram-node-bot');
-const bot = new telegram.Telegram(apiKey);
-
-const TelegramBaseController = telegram.TelegramBaseController;
-
-class HelloController extends TelegramBaseController {
+class PingController extends TelegramBaseController {
     /**
      * @param {Scope} $
      */
-    helloHandler($) {
-        $.sendMessage('Hello Yourself, human');
+    pingHandler($) {
+        $.sendMessage('pong');
     }
 
     get routes() {
-        return { 'hello': 'helloHandler' };
-    }
+        return {
+            'hello': 'pingHandler'
+        };
+    };
 }
-/**
-class OtherwiseController extends TelegramBaseController {
-    handle() {
-        console.log('otherwise');
-    }
-}
-*/
-bot.router
-    .when(['hello'], new HelloController());
-   // .otherwise(new OtherwiseController());
 
-
-
-//bot.api.sendMessage('@test', '/hello');
-//bot.api.sendMessage('@test', '/coucou');
-console.log('Bot started!');
+tg.router
+    .when(['ping'], new PingController());
