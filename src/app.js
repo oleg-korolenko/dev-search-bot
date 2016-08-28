@@ -4,7 +4,7 @@ const Telegram = require('telegram-node-bot');
 const TelegramBaseController = Telegram.TelegramBaseController;
 const tg = new Telegram.Telegram('181739768:AAGWDZOetZK5NAELIRn_VlJkVeFuoiOZ0xM');
 
-class PingController extends TelegramBaseController {
+class HelloController extends TelegramBaseController {
     /**
      * @param {Scope} $
      */
@@ -16,8 +16,13 @@ class PingController extends TelegramBaseController {
         return {
             'hello': 'pingHandler'
         };
-    };
+    }
 }
 
+
+class OtherwiseController extends TelegramBaseController {
+    handle() {console.log('otherwise');}
+}
 tg.router
-    .when(['ping'], new PingController());
+    .when(['hello'], new HelloController())
+    .otherwise(new OtherwiseController());
