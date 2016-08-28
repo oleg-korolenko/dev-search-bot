@@ -1,5 +1,4 @@
-const fs = require('fs');
-const apiKey = fs.readFileSync(__dirname+'/telegram-api.key', 'utf-8');
+const apiKey = process.env.TELEGRAM_API_KEY;
 const telegram = require('telegram-node-bot');
 const bot = new telegram.Telegram(apiKey);
 
