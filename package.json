@@ -4,7 +4,7 @@
   "description": "Telegram bot for dev search on diffent tech sources",
   "main": "src/app.js",
   "scripts": {
-    "test": "test",
+    "build": "npm install",
     "start": "node src/app.js"
   },
   "keywords": [
@@ -14,7 +14,8 @@
   "author": "oleg.korolenko@gmail.com",
   "license": "MIT",
   "dependencies": {    
-    "telegram-node-bot": "^3.0.12"
+    "telegram-node-bot": "^3.0.12",
+    "express": "4.13.3"
   },
   "devDependencies": {
     "eslint": "^3.3.1",
