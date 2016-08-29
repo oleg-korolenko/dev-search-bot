@@ -1,8 +1,9 @@
 'use strict';
 
 require('dotenv').config();
-const apiKey = process.env.TELEGRAM_API_KEY; 
 
+const apiKey = process.env.TELEGRAM_API_KEY; 
+console.log('apiKey=' + apiKey);
 const Telegram = require('telegram-node-bot');
 const TelegramBaseController = Telegram.TelegramBaseController;
 const tg = new Telegram.Telegram(apiKey);
