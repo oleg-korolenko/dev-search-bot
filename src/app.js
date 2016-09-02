@@ -3,7 +3,6 @@
 require('dotenv').config();
 
 const apiKey = process.env.TELEGRAM_API_KEY; 
-console.log('apiKey=' + apiKey);
 const Telegram = require('telegram-node-bot');
 const TelegramBaseController = Telegram.TelegramBaseController;
 const tg = new Telegram.Telegram(apiKey);
@@ -28,7 +27,7 @@ console.log('Bot started!');
 
 
 class OtherwiseController extends TelegramBaseController {
-    handle() {console.log('otherwise');}
+    handle($) {$.sendMessage('Don\'t hear ya');}
 }
 tg.router
     .when(['hello'], new HelloController())
